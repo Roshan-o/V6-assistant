@@ -96,7 +96,7 @@ if __name__=='__main__':
                 print(result)
 
 
-            elif "open wikipedia" in query():
+            elif "open wikipedia" in query:
                 cc.speak("what do you want search on wikipedia")
                 query=cc.take_command()
                 result=o.search_on_wikipedia(query)
@@ -106,14 +106,15 @@ if __name__=='__main__':
 
             elif "send an email" in query:
                 cc.speak("to which email address should I send")
-                fix=True
-                while fix:
-                    reciever=cc.take_command()
-                    cc.speak(f"reciever email address{reciever}")
-                    f=cc.take_command()
-                    if "ok" in f:
-                        f=False
-                    cc.speak("locking the email address")
+                # fix=True
+                # while fix:
+                #     reciever=cc.take_command()
+                #     cc.speak(f"reciever email address{reciever}")
+                #     f=cc.take_command()
+                #     if "ok" in f:
+                #         f=False
+                #     cc.speak("locking the email address")
+                reciever=input("Enter Email address:")
                 cc.speak("what is the subject")
                 subject=cc.take_command().capitalize()
                 cc.speak(f"subject is{subject}")
@@ -126,7 +127,7 @@ if __name__=='__main__':
                 else:
                     cc.speak("can't able to send email,sorry sir")
                 
-                
+
             
             
             

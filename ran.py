@@ -18,3 +18,4 @@ random_text=[
 
 # while sending mail:
     # say ok if email address processed from speech is correct
+# enter email address on terminal
