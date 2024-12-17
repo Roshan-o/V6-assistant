@@ -70,6 +70,8 @@ if __name__=='__main__':
                 cc.speak("opening armour crate")
                 ar_path="C:\\Users\\ASUS\\AppData\\Local\\Microsoft\\WindowsApps\\ArmouryCrate.exe"
                 os.path(ar_path)
+
+
             elif "find my ip address" in query: 
                 # ip=o.find_myip()["ip"]
                 details=o.find_myip()
@@ -78,22 +80,53 @@ if __name__=='__main__':
                 print(f"your ip is {ip}") 
                 location=details['country']+" "+details['regionName']
                 print(f"your location is {location}")
+
+
             elif "open youtube" in query:
                 cc.speak("what do you want on youtube")
                 video=cc.take_command()
                 o.youtube(video)
+
+
             elif "open google" in query:
                 cc.speak("what do you want on google")
                 query=cc.take_command()
                 result=o.search_on_google(query)
                 cc.speak(f"According to google,{result}")
                 print(result)
+
+
             elif "open wikipedia" in query():
                 cc.speak("what do you want search on wikipedia")
                 query=cc.take_command()
                 result=o.search_on_wikipedia(query)
                 cc.speak(f"According to wikipedia,{result}")
                 print(result)
+
+
+            elif "send an email" in query:
+                cc.speak("to which email address should I send")
+                fix=True
+                while fix:
+                    reciever=cc.take_command()
+                    cc.speak(f"reciever email address{reciever}")
+                    f=cc.take_command()
+                    if "ok" in f:
+                        f=False
+                    cc.speak("locking the email address")
+                cc.speak("what is the subject")
+                subject=cc.take_command().capitalize()
+                cc.speak(f"subject is{subject}")
+                cc.speak("what is the message")
+                message=cc.take_command().capitalize()
+                cc.speak(f"subject is{message}")
+                if o.send_email(reciever,subject,message):
+                    print("email sent")
+                    cc.speak("email sent")
+                else:
+                    cc.speak("can't able to send email,sorry sir")
+                
+                
             
             
             
