@@ -6,6 +6,7 @@ import shutil
 import online as o
 #to get paths
 
+
 running=True
 listening =False
 def start_listening():
@@ -36,7 +37,6 @@ if __name__=='__main__':
         if listening:
             query=cc.take_command()
             # print(query)
-
             if "how are you" in query or "how r u" in query:
                 cc.speak("I am fine sir")
                 print("I am fine sir")
@@ -49,7 +49,7 @@ if __name__=='__main__':
             elif "open camera" in query:
                 cc.speak("opening camera")
                 sp.run("start microsoft.windows.camera:",shell=True)
-            elif "open Notepad" in query:
+            elif "open notepad" in query:
                 cc.speak("opening notepad")
                 notepd_path="C:\\Users\ASUS\\AppData\\Local\\Microsoft\\WindowsApps\\notepad.exe"
                 # will get path of notepad
@@ -70,7 +70,7 @@ if __name__=='__main__':
                 cc.speak("opening armour crate")
                 ar_path="C:\\Users\\ASUS\\AppData\\Local\\Microsoft\\WindowsApps\\ArmouryCrate.exe"
                 os.path(ar_path)
-            elif "find my IP address" in query: 
+            elif "find my ip address" in query: 
                 # ip=o.find_myip()["ip"]
                 details=o.find_myip()
                 ip=details['query']
@@ -82,6 +82,19 @@ if __name__=='__main__':
                 cc.speak("what do you want on youtube")
                 video=cc.take_command()
                 o.youtube(video)
+            elif "open google" in query:
+                cc.speak("what do you want on google")
+                query=cc.take_command()
+                result=o.search_on_google(query)
+                cc.speak(f"According to google,{result}")
+                print(result)
+            elif "open wikipedia" in query():
+                cc.speak("what do you want search on wikipedia")
+                query=cc.take_command()
+                result=o.search_on_wikipedia(query)
+                cc.speak(f"According to wikipedia,{result}")
+                print(result)
+            
             
             
     

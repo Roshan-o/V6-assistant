@@ -12,6 +12,7 @@ def find_myip():
 
 def search_on_wikipedia(query):
     results=wikipedia.summary(query,sentences=2)
+    # can use info() pywhatkit.info("Python programming language", lines=3)
     return results
 
 def search_on_google(query):
@@ -19,6 +20,8 @@ def search_on_google(query):
 
 def youtube(video):
     kit.playonyt(video)
+
+
 
 
 

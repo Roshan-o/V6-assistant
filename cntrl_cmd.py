@@ -51,7 +51,6 @@ def take_command():
     except Exception:
         speak("can't able to recognise the voice")
         query="None"
-    return query
-
+    return query.lower()
 
 
