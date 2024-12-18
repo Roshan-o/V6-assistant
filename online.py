@@ -1,13 +1,18 @@
 import requests
 import wikipedia
 import pywhatkit as kit
+
 import smtplib
-from email.message import EmailMessage
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 from pywhatkit.mail import send_mail
 
 sender="roshankalluri1@gmail.com"
-password="vijayagowri@ct"
+# password="vijayagowri@ct"
+password="famn xxaj qayk vvma" #should use only app password 
+# google has stopped allowing third party aplication to use google so, we need to use 
+# app password
 
 def find_myip():
     # ip_add=requests.get("http://ip-api.com/json/{query}?fields=status,continent,country,regionName,city,district,lat,lon").json()
@@ -27,20 +32,25 @@ def search_on_google(query):
 def youtube(video):
     kit.playonyt(video)
 
-def send_email(reciver,subject,message):
+def send_email(receiver,subject,body):
     try:
-        # email=EmailMessage()
-        # email['To']=reciver
-        # email['From']=sender
-        # email['Subject']=subject
-
+        # MIME-Multipurpose Internet Mail Extensions
+        message = MIMEMultipart()
+        message["From"] = sender
+        message["To"] = receiver
+        message["Subject"] = subject
+        message.attach(MIMEText(body, "plain"))
         # email.set_content(message)
-        # s=smtplib.SMTP("stmp.gmail.com", 465)
-        # s.starttls()
-        # s.login(sender,password)
-        # s.send_message(email)
+        # Gmail: smtp.gmail.com
+        # Yahoo: smtp.mail.yahoo.com
+        # Outlook: smtp.office365.com
+
+        s=smtplib.SMTP("smtp.gmail.com", 587)
+        s.starttls()
+        s.login(sender,password)
+        s.sendmail(sender,receiver,message.as_string())
         # s.close()
-        send_mail(sender,password,message,subject,reciver)
+        # send_mail(sender,password,message,subject,receiver)
         return True
     
     except Exception as exc:
@@ -48,5 +58,5 @@ def send_email(reciver,subject,message):
         return False
 
 if __name__=='__main__':
-    f=send_email("roshanlalkalluri@gmail.com","hi","hi")
+    f=send_email("roshanlalkalluri@gmail.com","hi2","hi")
     print(f)
