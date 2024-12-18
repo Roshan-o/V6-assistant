@@ -157,7 +157,11 @@ if __name__=='__main__':
                 news=o.get_news()
                 cc.speak(news)
                 print(news)
-    
+            elif "what is the wheather today" in query:
+                cc.speak("what is your city name sir")
+                city=input("enter city:")
+                cc.speak(f"temperature is {o.get_weather(city)} degree celceus")
+            
 
     print("program terminated....")
                 

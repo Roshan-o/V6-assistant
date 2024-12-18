@@ -62,8 +62,20 @@ def get_news():
     news=requests.get(url).json()
     return news["articles"][0]["title"]
 
+def get_weather():
+    llurl="http://api.openweathermap.org/geo/1.0/zip?zip=530013,IN&appid=5804b51bd34a8a18e1ccc18879e18842"
+    ll=requests.get(llurl).json()
+    lon=ll["lon"]
+    lat=ll["lat"]
+    # print(f"lon:{lon};lat:{lat}")
+    querystring = {"query":"New Delhi"}
+    wurl = "https://api.weatherstack.com/current?access_key=2fa6e80a2ff35d3e17d2824b35fa8562"
+    return requests.get(wurl,querystring).json()['current']['temperature']
+
+
 if __name__=='__main__':
     # f=send_email("roshanlalkalluri@gmail.com","hi2","hi")
     # print(f)
-    print(get_news())
+    # print(get_news())
+    print(get_weather())
 
