@@ -16,12 +16,12 @@ pause=True
 def start_listening():
     global listening
     listening=True
-    print("started Listening....")
+    
 
 def stop_listening():
     global listening
     listening=False
-    print("stopped Listening....")
+    
 
 
 def pause_program():
@@ -35,7 +35,6 @@ def pause_program():
 
 def exit_program():
     global running
-    print("program terminated....")
     running=False
 
 keyboard.add_hotkey('p',start_listening)
@@ -48,9 +47,13 @@ keyboard.add_hotkey('2',pause_program)
 def take_command_ftORv():
     if listening:
         q=cc.take_command()
+        if not listening:
+            print("stopped Listening....")
         return q
     else:
         q=input("Enter command:")
+        if listening:
+            print("started Listening....")
         return q
 
 
@@ -149,6 +152,14 @@ if __name__=='__main__':
                     cc.speak("email sent")
                 else:
                     cc.speak("can't able to send email,sorry sir")
+            
+            elif "news today" in query:
+                news=o.get_news()
+                cc.speak(news)
+                print(news)
+    
+
+    print("program terminated....")
                 
 
             

@@ -57,6 +57,13 @@ def send_email(receiver,subject,body):
         print(exc)
         return False
 
+def get_news():
+    url="https://newsapi.org/v2/top-headlines?country=us&apiKey=155ca96a8e0942bcad7aaaf0373510d3"
+    news=requests.get(url).json()
+    return news["articles"][0]["title"]
+
 if __name__=='__main__':
-    f=send_email("roshanlalkalluri@gmail.com","hi2","hi")
-    print(f)
+    # f=send_email("roshanlalkalluri@gmail.com","hi2","hi")
+    # print(f)
+    print(get_news())
+
