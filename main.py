@@ -9,6 +9,10 @@ import online as o
 
 running=True
 listening =False
+
+pause=True
+
+
 def start_listening():
     global listening
     listening=True
@@ -19,23 +23,43 @@ def stop_listening():
     listening=False
     print("stopped Listening....")
 
+
+def pause_program():
+    global pause
+    pause=not pause
+    if not pause:
+        print("program being stopped!")
+    else:
+        print("program started.....")
+
+
 def exit_program():
     global running
-    print("program being stopped")
+    print("program terminated....")
     running=False
 
-keyboard.add_hotkey('k',start_listening)
-keyboard.add_hotkey('space',stop_listening)    
+keyboard.add_hotkey('p',start_listening)
+keyboard.add_hotkey('5',stop_listening)    
 
 keyboard.add_hotkey('esc',exit_program)
+keyboard.add_hotkey('2',pause_program)
+
+
+def take_command_ftORv():
+    if listening:
+        q=cc.take_command()
+        return q
+    else:
+        q=input("Enter command:")
+        return q
 
 
 if __name__=='__main__':
-    cc.speak("  hi i am V6")
+    cc.speak("hi i am V6")
     cc.greet_me()
     while running:
-        if listening:
-            query=cc.take_command()
+        if pause:
+            query=take_command_ftORv()
             # print(query)
             if "how are you" in query or "how r u" in query:
                 cc.speak("I am fine sir")
@@ -69,7 +93,7 @@ if __name__=='__main__':
             elif "open armour crate" in query:
                 cc.speak("opening armour crate")
                 ar_path="C:\\Users\\ASUS\\AppData\\Local\\Microsoft\\WindowsApps\\ArmouryCrate.exe"
-                os.path(ar_path)
+                os.startfile(ar_path)
 
 
             elif "find my ip address" in query: 
@@ -84,21 +108,20 @@ if __name__=='__main__':
 
             elif "open youtube" in query:
                 cc.speak("what do you want on youtube")
-                video=cc.take_command()
+                video=take_command_ftORv()
                 o.youtube(video)
 
 
             elif "open google" in query:
                 cc.speak("what do you want on google")
-                query=cc.take_command()
+                query=take_command_ftORv()
                 result=o.search_on_google(query)
                 cc.speak(f"According to google,{result}")
                 print(result)
 
-
             elif "open wikipedia" in query:
                 cc.speak("what do you want search on wikipedia")
-                query=cc.take_command()
+                query=take_command_ftORv()
                 result=o.search_on_wikipedia(query)
                 cc.speak(f"According to wikipedia,{result}")
                 print(result)
@@ -108,18 +131,18 @@ if __name__=='__main__':
                 cc.speak("to which email address should I send")
                 # fix=True
                 # while fix:
-                #     reciever=cc.take_command()
+                #     reciever=take_command_ftORv()
                 #     cc.speak(f"reciever email address{reciever}")
-                #     f=cc.take_command()
+                #     f=take_command_ftORv()
                 #     if "ok" in f:
                 #         f=False
                 #     cc.speak("locking the email address")
                 reciever=input("Enter Email address:")
                 cc.speak("what is the subject")
-                subject=cc.take_command().capitalize()
+                subject=take_command_ftORv().capitalize()
                 cc.speak(f"subject is{subject}")
                 cc.speak("what is the message")
-                message=cc.take_command().capitalize()
+                message=take_command_ftORv().capitalize()
                 cc.speak(f"subject is{message}")
                 if o.send_email(reciever,subject,message):
                     print("email sent")

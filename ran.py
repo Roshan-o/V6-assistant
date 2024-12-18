@@ -11,7 +11,8 @@ random_text=[
 #  pip install pyaudio
 # controls
 # k-start listening
-# space-stop listening
+# 5-stop listening
+# 1-pause program
 # esc-exit
 
 # api used for ipaddress and details https://ip-api.com/docs/api:json#test
