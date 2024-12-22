@@ -161,8 +161,11 @@ if __name__=='__main__':
                 cc.speak("what is your city name sir")
                 city=input("enter city:")
                 cc.speak(f"temperature is {o.get_weather(city)} degree celceus")
-            
-
+            elif "open spotify" in query:
+                cc.speak("opening spotify")
+                # sp.run(["powershell", "-Command", "Start-Process shell:AppsFolder\\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify"])
+                os.startfile("shell:AppsFolder\\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
+                # shell:Appsfolder -- is a virtual folder that store microsoft app locations
     print("program terminated....")
                 
 
