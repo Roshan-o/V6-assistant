@@ -31,71 +31,62 @@
  ┣ 📜 cntrl_cmd.py   # Core speech recognition & text-to-speech functions
  ┣ 📜 online.py      # Online services (Google, YouTube, Wikipedia, Email, News, Weather, IP lookup)
  ┣ 📜 README.md      # Documentation
-Setup & Installation ⚙️
-1. Clone the repository
-bash
-Copy code
-git clone https://github.com/YourUsername/VirtualAssistant-V6.git
-cd VirtualAssistant-V6
-2. Install dependencies
-bash
-Copy code
-pip install -r requirements.txt
-Dependencies include:
 
-speechrecognition
+## Setup & Installation ⚙️
 
-pyttsx3
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/YourUsername/VirtualAssistant-V6.git
+    cd VirtualAssistant-V6
+    ```
 
-requests
+2. **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+    **Dependencies include:**
+    - speechrecognition
+    - pyttsx3
+    - requests
+    - wikipedia
+    - pywhatkit
+    - keyboard
 
-wikipedia
+3. **API Setup**
+    - **Email:** Use your Gmail App Password (not your login password) in `online.py`.
+    - **Weather API:** Replace API keys in `online.py` with your own from OpenWeather and WeatherStack.
+    - **News API:** Get your API key from NewsAPI.
 
-pywhatkit
+---
 
-keyboard
+## Usage 🖥️
 
-3. API Setup
-Email: Use your Gmail App Password (not your login password) in online.py.
-
-Weather API: Replace API keys in online.py with your own from OpenWeather and WeatherStack.
-
-News API: Get your API key from NewsAPI.
-
-Usage 🖥️
 Run the assistant with:
-
-bash
-Copy code
+```bash
 python main.py
-Example commands you can try:
-"How are you?"
+```
 
-"Open Notepad"
+**Example commands you can try:**
+- "How are you?"
+- "Open Notepad"
+- "Find my IP address"
+- "Open YouTube" → (then say video name)
+- "Open Wikipedia" → (then say query)
+- "Send an email"
+- "News today"
+- "What is the weather today?"
 
-"Find my IP address"
+---
 
-"Open YouTube" → (then say video name)
+## Contribution 🛠️
 
-"Open Wikipedia" → (then say query)
+1. Fork 🍴 the repo  
+2. Create a new branch 🌱  
+3. Make your changes ✏️  
+4. Submit a pull request 🔥  
 
-"Send an email"
+---
 
-"News today"
+## Author ✨
 
-"What is the weather today?"
-
-Contribution 🛠️
-Fork 🍴 the repo
-
-Create a new branch 🌱
-
-Make your changes ✏️
-
-Submit a pull request 🔥
-
-Author ✨
-Developed by Kalluri Roshan Lal 💻
-
-vbnet
-Copy code
+Developed by **Kalluri Roshan Lal** 💻
